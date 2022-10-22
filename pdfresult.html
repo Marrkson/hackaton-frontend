@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Input</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    body{
+        overflow: hidden;
+        margin: 0;
+        height: 100vh;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.7)) , url(back.jpg);
+        /*background-image: url("back.webp");*/
+        background-position: center;
+        background-size: cover;
+    }
+    .leftside {
+        background-color: darkgoldenrod;
+    }
+    .rightside {
+        background-color: silver;
+    }
+</style>
+<body>
+<!--NAV BAR-->
+<nav class="navbar navbar-light bg-dark">
+    <span class="navbar-brand mb-0 h1 text-white">LOGO</span>
+</nav>
+<div class="container-fluid mt-5 mb-5" style="height: 95%;">
+    <div class="row" style="height: 100%;">
+        <div class="leftside col-xl-8 col-md-8" style=" border-radius: 10px">
+            <div class="card-body">
+                <h1 class="card-title text-center text-white">
+                    PDF TEXT
+                </h1>
+                <p style="line-height: 3" class="card-text text-center text-white" id="pdftext">
+                    Generating random paragraphs can be an excellent way for writers to get their creative flow going at the
+                    beginning of the day. The writer has no idea what topic the random paragraph will be about when it
+                    appears. This forces the writer to use creativity to complete one of three common writing challenges.
+                    The writer can use the paragraph as the first one of a short story and build upon it. A second option is
+                    to use the random paragraph somewhere in a short story they create. <b style="background-color: mediumseagreen">The third option is to have the
+                    random paragraph be the ending paragraph in a short story.</b> No matter which of these challenges is
+                    undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.
+                </p>
+                <div style="text-align: center; margin: auto">
+                    <a href="getinputpage.html" class="btn btn-primary"> <- Go back</a>
+                </div>
+            </div>
+        </div>
+        <div class="rightside col-xl-4 col-md-4" style=" border-radius: 10px">
+            <div class="card-body">
+                <h1 class="card-title text-center text-white">
+                    ASK A QUESTION
+                </h1>
+                <div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Question</span>
+                        </div>
+                        <input id="question" type="text" aria-label="question" placeholder="Type your Question Here" class="form-control"><br>
+                    </div>
+                </div>
+            </div>
+            <label for="textarea1">Your Answer</label>
+            <textarea style="height: 400px" disabled class="form-control" id="textarea1" rows="3" placeholder="Answer will be displayed here"></textarea>
+            <div >
+                <a href="">
+                    <i class="fa fa-thumbs-up" style="font-size:36px"></i>
+                </a>
+                <div style="float: right">
+                    <a href="">
+                        <i class="fa fa-thumbs-down" style="font-size:36px"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            var formData = {
+                question: $("#question").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "Your api url here",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+                console.log(data);
+                $("#textarea1").html(data["value"]);
+            });
+            event.preventDefault();
+        });
+    });
+</script>
+</body>
+</html>
