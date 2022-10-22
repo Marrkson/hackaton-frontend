@@ -270,7 +270,7 @@
             var files = this.files;
             fd.append('file',files[0]);
             $.ajax({
-                url: 'http://api-webserver.wetagg.com/get_text_from_pdf',
+                url: 'https://api-webserver.wetagg.com/get_text_from_pdf',
                 type: 'POST',
                 data: fd,
                 processData: false,  // tell jQuery not to process the data
@@ -300,7 +300,7 @@
             let json_fd = JSON.stringify(Object.fromEntries(fd));
             console.log(json_fd);
             $.ajax({
-                url: 'http://api-webserver.wetagg.com/get_answer_from_ID',
+                url: 'https://api-webserver.wetagg.com/get_answer_from_ID',
                 type: 'POST',
                 data: json_fd,
                 processData: false,  // tell jQuery not to process the data
