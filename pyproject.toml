@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "hackaton-frontend"
+version = "0.1.0"
+description = ""
+authors = ["Jakob Endler <jakob@endler.tech>"]
+readme = "README.md"
+packages = [{include = "hackaton_frontend"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
