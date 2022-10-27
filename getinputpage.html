@@ -293,14 +293,14 @@
         $("#questionbtn").click(function () {
             var fd = new FormData();
             var question = $("#question").val();
-            var filename = $("#filename").val();
-            fd.append('ID',filename);
+            var pdftext = $("#pdftext").val();
+            fd.append('text',pdftext);
             fd.append('question',question);
             // Create a json with ID and question, and send it in the post request
             let json_fd = JSON.stringify(Object.fromEntries(fd));
             console.log(json_fd);
             $.ajax({
-                url: 'https://api-webserver.wetagg.com/get_answer_from_ID',
+                url: 'https://api-webserver.wetagg.com/get_answer',
                 type: 'POST',
                 data: json_fd,
                 processData: false,  // tell jQuery not to process the data
