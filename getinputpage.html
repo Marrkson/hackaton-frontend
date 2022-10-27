@@ -293,7 +293,7 @@
         $("#questionbtn").click(function () {
             var fd = new FormData();
             var question = $("#question").val();
-            var pdftext = $("#pdftext").val();
+            var pdftext = $("#pdftext").text();
             fd.append('text',pdftext);
             fd.append('question',question);
             // Create a json with ID and question, and send it in the post request
